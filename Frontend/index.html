@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./public/index.css">
+</head>
+<body>
+    <div class="root">
+        <div class="add">
+            <div>添加事件</div>
+            <form action="/new" method="post">
+                <input type="text" name="task">
+                <input type="submit" value="添加">
+            </form>
+        </div>
+        <div class="mission">
+            <ul type = "none">
+                {{ each tasks }}
+                <li>
+                    <div class="list">
+                        <div class="content">{{ $value.task }}</div>
+                        <div class="btn">
+                            <button><a href="/delete?id={{$value.id}}">删除</a></button>
+                            <button>更改</button>
+                        </div>
+                        <div class="change">
+                            <form action="/change?id={{$value.id}}" method="post">
+                                <input type="text" name="task">
+                                <input type="submit" value="更改">
+                                <input type="button" value="取消">
+                            </form>
+                        </div>
+                    </div>
+                </li>
+                {{ /each }}
+            </ul>
+        </div>
+    </div>
+</body>
+<script src="./public/index.js"></script>
+</html>
